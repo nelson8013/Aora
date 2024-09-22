@@ -28,7 +28,6 @@ const SignIn = () => {
       } else {
         await Login(form.email, form.password);
 
-
         setUser(result);
         setIsLoggedIn(true);
       }
