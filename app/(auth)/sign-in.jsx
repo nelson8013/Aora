@@ -22,12 +22,11 @@ const SignIn = () => {
 
       if (activeSession) {
         const result = await getCurrentUser();
-
         setUser(result)
         setIsLoggedIn(true)
       } else {
         await Login(form.email, form.password);
-
+        const result = await getCurrentUser();
         setUser(result);
         setIsLoggedIn(true);
       }

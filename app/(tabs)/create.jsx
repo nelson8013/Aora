@@ -23,7 +23,6 @@ const Create = () => {
   const openPicker = async (selectType) => {
    let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: selectType === 'image' ? ImagePicker.MediaTypeOptions.Images : ImagePicker.MediaTypeOptions.Videos,
-
       aspect: [4,3],
       quality: 1
    })
@@ -39,17 +38,20 @@ const Create = () => {
     }
   }
 
+  /* The create video isn't working */
   const submit = async () => {
-    if(  form.title || form.video || form.thumbnail ||form.prompt){
-      Alert.alert('All fields are required')
-    }
+    // if(  form.title || form.video || form.thumbnail ||form.prompt){
+    //   Alert.alert('All fields are required')
+    //   return
+    // }
 
     setUploading(true)
 
     try {
-        await createVideo({...form, userId: user.$id})
+        const newVideo = await createVideo({...form, userId: user.$id})
 
-        Alert.alert('Success', 'Form created successfully')
+
+        Alert.alert('Success', 'Video created successfully')
 
         router.push('/')
     } catch (error) {
